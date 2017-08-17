@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/demo1.css"/>
+		<link rel="stylesheet" type="text/css" href="css/swiper.min.css"/>
+		    <script>
+			(function(doc, win) {
+				var docEl = doc.documentElement,
+					resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+					recalc = function() {
+						var clientWidth = docEl.clientWidth;
+						if(!clientWidth) return;
+						docEl.style.fontSize = 100 * (clientWidth / 640) + 'px';
+					};
+				if(!doc.addEventListener) return;
+				win.addEventListener(resizeEvt, recalc, false);
+				doc.addEventListener('DOMContentLoaded', recalc, false);
+			})(document, window);
+		</script>
+	</head>
+	<body>
+		<div class="container">
+			<header>
+				<button onclick="playPause(this)" id="p" style="width: 0.6rem; height: 0.3rem; margin-left: 0.4rem; background: deeppink; border: 1px solid deeppink; border-radius: 0.2rem;"><p style="color: white;">播放</p></button>
+<progress value="0" max="100" id="proDownFile" style="width: 0.6rem; height: 0.21rem; margin-top: 0.2rem;"></progress>
+<button onclick="kj()" style="width: 0.6rem; height: 0.3rem; background: deeppink; border: 1px solid deeppink; border-radius: 0.2rem;"><p style="color: white;">快进</p></button>
+<button onclick="kt()" style="width: 0.6rem; height: 0.3rem; background: deeppink; border: 1px solid deeppink; border-radius: 0.2rem;"><p style="color: white;">快退</p></button>
+<button onclick="shoutup(this)" style="width: 0.6rem; height: 0.3rem; background: deeppink; border: 1px solid deeppink; border-radius: 0.2rem;"><p style="color: white;">静音</p></button>
+<button onclick="fast()" style="width: 0.6rem; height: 0.3rem; background: deeppink; border: 1px solid deeppink; border-radius: 0.2rem;"><p style="color: white;">加速播放</p></button>
+<button onclick="slow()" style="width: 0.6rem; height: 0.3rem; background: deeppink; border: 1px solid deeppink; border-radius: 0.2rem;"><p style="color: white;">减速播放</p></button>
+<button onclick="sound()" style="width: 0.6rem; height: 0.3rem; background: deeppink; border: 1px solid deeppink; border-radius: 0.2rem;"><p style="color: white;">声音调高</p></button>
+<button onclick="sd()" style="width: 0.6rem; height: 0.3rem; background: deeppink; border: 1px solid deeppink; border-radius: 0.2rem;"><p style="color: white;">声音调低</p></button>
+<video src="img/李易峰 - 剑伤.mp3" id="video1" poster="images/pic.jpg" style="width: 1rem; height: 0.4rem;">
+</video>
+</header>
+
+<section>
+	<img src="img/QQ截图20170817104809.png"/>
+</section>
+<footer>
+	<h1><a href="demo2.html">请点击这里</a></h1>
+</footer>
+<script type="text/javascript">
+var myvideo = document.getElementById("video1");
+var pay = 1 //控制播放速度
+var intValue=0;
+var intTimer;
+var objPro=document.getElementById('proDownFile');
+  
+//播放
+ function Interval_handler(){
+     if(pay ==2)
+         intValue+=2;
+     else if (pay ==3)
+         intValue+=0.5;
+     else
+        intValue++;
+
+    objPro.value=intValue;
+    if(intValue>=objPro.max){
+        document.getElementById('p').innerHTML="播放";
+       clearInterval(intTimer);
+       objPro.value=0;
+          intValue=0;
+    }
+ }
+//播放暂停
+function playPause(obj){
+    if(myvideo.paused){
+         intTimer=setInterval(Interval_handler,100);
+        obj.innerHTML="暂停";
+        myvideo.play();
+    }else{
+        clearInterval(intTimer);
+        obj.innerHTML="播放";
+        myvideo.pause();
+    };
+};
+//快进
+function kj(){
+    myvideo.currentTime+=2;
+    intValue+=20;
+    objPro.value=intValue
+    if(intValue>objPro.max){
+       clearInterval(intTimer);
+       objPro.value=0;
+          intValue=0;
+    }
+    
+}
+//快退
+function kt(){
+    myvideo.currentTime-=2;
+    intValue-=20;
+    objPro.value=intValue
+    if(intValue<=0){
+       objPro.value=0;
+          intValue=0;
+        }
+}
+//静音
+function shoutup(sup){
+    if(myvideo.muted){
+        sup.innerHtml="启动"    
+        myvideo.muted=false;
+    }else{
+        sup.innerHtml="静音"    
+        myvideo.muted=true;
+    }
+}
+//加速播放
+function fast(){
+    myvideo.playbackRate=2;
+    pay = 2;
+    
+}
+//减速播放
+function slow(){
+    myvideo.playbackRate=1/2;
+    pay =3;
+}
+//声音调高
+function sound(){
+    myvideo.volume+=0.2;    
+}
+
+//声音调低
+function sd(){
+    myvideo.volume-=0.2;    
+}
+</script>
+			</header>
+			<section></section>
+			<footer></footer>
+		</div>	
+	</body>
+</html>

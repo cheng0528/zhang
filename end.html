@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/end.css"/>
+		<script>
+			(function(doc, win) {
+				var docEl = doc.documentElement,
+					resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+					recalc = function() {
+						var clientWidth = docEl.clientWidth;
+						if(!clientWidth) return;
+						docEl.style.fontSize = 100 * (clientWidth / 640) + 'px';
+					};
+				if(!doc.addEventListener) return;
+				win.addEventListener(resizeEvt, recalc, false);
+				doc.addEventListener('DOMContentLoaded', recalc, false);
+			})(document, window);
+		</script>
+	</head>
+	<body>
+		<div class="container">
+			<header>
+				<h1>我想大声告诉你：</h1>
+			</header>
+			<section>
+				<h1>我还爱着你，请原谅我，让我拉着你的手</h1>
+			</section>
+			<footer>
+				<h1>回来吧！</h1>
+			</footer>
+		</div>
+	</body>
+</html>

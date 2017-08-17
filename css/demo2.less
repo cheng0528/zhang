@@ -1,0 +1,93 @@
+@import url(m_style.css); //封装宽高及背景
+.full(@w, @h, @bg) {
+    width: @w;
+    height: @h;
+    background: @bg;
+}
+//封装浮动
+.fl(@f: left) {
+    float: @f;
+}
+
+.fr(@f: right) {
+    float: @f;
+}
+
+//封装居中
+.cen() {
+    margin: 0 auto;
+}
+.box(@dq: horizontal) {
+    display: -webkit-box; //设置父元素为弹性盒布局
+    -webkit-box-orient: @dq; //将子元素的排列方式设置
+}
+
+.container,
+body,   
+html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+}
+.container{
+    .box(vertical);
+    header{
+        .full(100%,0.66rem,blue);
+           background: url(../img/88c84a63af055f48.png);
+           h1{
+               font-size: 0.3rem;
+               color:red;
+               text-align: center;
+               line-height: 0.66rem;
+           }
+    }
+    section{
+        -webkit-box-flex: 1;
+       
+        .full(100%,auto,#f5f5f9);
+        .box{
+            margin-left: 1rem;
+            .swiper-container{
+                .swiper-wrapper{
+                    .swiper-slide{
+                      .box;
+                      dl{
+                          -webkit-box-flex: 1;
+                          margin-top: 0.44rem;
+                          text-align: center;
+                          dt{
+//                            margin-left: 0.6rem;
+                              img{
+               
+                                    .full(0.58rem,auto,none);
+                
+                                  } 
+                          }
+                          dd{
+                              
+                              margin-top: 0.28rem;
+                          }
+                      }  
+                     
+                    }
+                }
+            }
+            
+            //.full(100%,2.3rem,white);
+            
+             
+            
+        }
+    }
+    footer{
+        .full(100%,0.66rem,pink);
+        background: url(../img/88c84a63af055f48.png);
+        h1{
+            font-size: 0.3rem;
+            line-height: 0.66rem;
+            text-align: center;
+            
+        }
+    }
+}

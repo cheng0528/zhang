@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/demo2.css"/>
+		<link rel="stylesheet" type="text/css" href="css/swiper.min.css"/>
+		<script>
+			(function(doc, win) {
+				var docEl = doc.documentElement,
+					resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+					recalc = function() {
+						var clientWidth = docEl.clientWidth;
+						if(!clientWidth) return;
+						docEl.style.fontSize = 100 * (clientWidth / 640) + 'px';
+					};
+				if(!doc.addEventListener) return;
+				win.addEventListener(resizeEvt, recalc, false);
+				doc.addEventListener('DOMContentLoaded', recalc, false);
+			})(document, window);
+		</script>
+	</head>
+	<body>
+		<div class="container">
+		<header>
+			<h1>曾经的你</h1>
+		</header>
+		<section>
+			<div class="box">
+				<!-- Swiper -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" style="background-image:url(img/nature1.jpg)"><img src="img/psb (1).jpg"/></div>
+            <div class="swiper-slide" style="background-image:url(img/nature2.jpg)"><img src="img/psb (2).jpg"/></div>
+            <div class="swiper-slide" style="background-image:url(img/nature3.jpg)"><img src="img/psb (3).jpg"/></div>
+            <div class="swiper-slide" style="background-image:url(img/nature4.jpg)"><img src="img/psb (4).jpg"/></div>
+            <div class="swiper-slide" style="background-image:url(img/nature5.jpg)"><img src="img/psb (5).jpg"/></div>
+       		 <div class="swiper-slide" style="background-image:url(img/nature5.jpg)"><img src="img/psb.jpg"/></div>
+       		  <div class="swiper-slide" style="background-image:url(img/nature5.jpg)"><img src="img/psb.jpg"/></div>
+       		  <div class="swiper-slide" style="background-image:url(img/nature5.jpg)"><img src="img/psb (6).jpg"/></div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+<script type="text/javascript" src="css/swiper.min.js"></script>
+    <!-- Swiper JS -->
+			</div>
+		</section>
+		<footer>
+			<h1><a href="end.html">我最想说(点击)</a></h1>
+		</footer>
+	</div>
+	<script>
+    var swiper = new Swiper('.box .swiper-container', {
+        pagination: '.swiper-pagination',
+        effect: 'coverflow',
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: 'auto',
+        autoplay: 1000,
+        coverflow: {
+            rotate: 50,
+            stretch: 0,
+            depth: 100,
+            modifier: 1,
+            slideShadows : true
+            
+        }
+    });
+    </script>
+	</body>
+</html>
